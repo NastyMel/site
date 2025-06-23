@@ -1,0 +1,171 @@
+/* ───────────────────── FONTS ───────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Mrs+Saint+Delafield&display=swap");
+
+@font-face{
+  font-family:"PP Neue Montreal";
+  src:url("https://fonts.cdnfonts.com/s/17540/PPNeueMontreal-Bold.woff2") format("woff2");
+  font-weight:700; font-display:swap;
+}
+
+/* ─────────────────── VARIABLES ─────────────────── */
+:root{
+  --font-head:"PP Neue Montreal",sans-serif;
+  --font-mono:"Space Mono",monospace;
+  --font-hand:"Mrs Saint Delafield",cursive;
+
+  --clr-bg:#eae8e2;
+  --clr-fg:#000;
+  --clr-accent:#ff430a;
+
+  --quote-size:14vw;
+  --author-size:.75rem;
+  --cursor-size:18px;
+}
+
+/* ───────── GLOBAL RESET + BODY ───────── */
+*{margin:0;padding:0;box-sizing:border-box}
+
+html,body{
+  min-height:100%;
+  height:auto;
+  overflow-x:hidden;
+  background:var(--clr-bg);
+  color:var(--clr-fg);
+  font-family:var(--font-head);
+  letter-spacing:-.04em;
+  cursor:none;
+  position:relative;
+}
+
+/* винтаж-шум */
+body::before{
+  content:"";
+  position:fixed;inset:-50%;
+  width:200%;height:200%;
+  background:url("https://assets.iceable.com/img/noise-transparent.png") repeat 0 0 /280px 280px;
+  animation:noise .3s steps(5) infinite;
+  pointer-events:none;
+  z-index:1;
+  opacity:.27;
+}
+@keyframes noise{0%,100%{transform:translate(0)}10%{transform:translate(-3%,-7%)}20%{transform:translate(-5%,3%)}30%{transform:translate(4%,-5%)}40%{transform:translate(-3%,5%)}50%{transform:translate(-5%,-2%)}60%{transform:translate(4%,0)}70%{transform:translate(0,4%)}80%{transform:translate(-4%,1%)}90%{transform:translate(2%,-3%)}}
+
+/* ─────────── CANVAS ─────────── */
+canvas{
+  position:fixed!important;inset:0;width:100%;height:100%;
+  z-index:2;pointer-events:none;
+}
+
+/* ─────────── CUSTOM CURSOR ─────────── */
+.custom-cursor{
+  position:fixed;left:0;top:0;
+  width:var(--cursor-size);height:var(--cursor-size);
+  border:2px solid #000;border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:10000;
+  transition:transform .08s;
+}
+
+/* ─────────── HERO CONTENT ─────────── */
+.content{
+  position:relative;min-height:50vh;
+  display:flex;justify-content:center;align-items:center;
+  padding:12vh 4vw 8vh;
+  z-index:5;
+}
+
+/* СЕТКА ДЛЯ ОПИСАНИЯ / ПОДПИСИ / ФАМИЛИИ */
+.quote-container{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto;   /* описание растягивается, подпись — авто */
+  grid-template-rows:auto 1fr;      /* 1-я строка: описание + подпись, 2-я: имя */
+  max-width:90%;margin-inline:auto;
+}
+
+/* описание */
+.author{
+  grid-column:1;grid-row:1;
+  font-family:var(--font-mono);
+  font-size:var(--author-size);
+  max-width:80ch;
+  text-align:left;
+}
+
+/* рукописная подпись справа */
+.custom-quote{
+  grid-column:2;grid-row:1;
+  align-self:start;
+  white-space:nowrap;
+  font-family:var(--font-hand);
+  font-size:clamp(32px,4vw,80px);
+  color:var(--clr-accent);
+  transform:translateY(-15%); /* чуть накрывает описание, при желании =0 */
+  pointer-events:none;z-index:6;
+}
+
+/* большое имя */
+.quote{
+  grid-column:1 / -1;grid-row:2;
+  font-size:var(--quote-size);
+  line-height:.85;
+  font-weight:700;
+  text-transform:uppercase;
+  text-align:left;
+}
+
+/* ─────────── PROFILE BADGE ─────────── */
+.profile-card{
+  position:fixed;left:16px;bottom:16px;
+  display:flex;gap:10px;align-items:center;
+  z-index:50;font-size:13px;
+}
+.profile-image{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.profile-name{font-weight:600}
+.profile-twitter a{color:#555;text-decoration:none}
+.profile-twitter a:hover{text-decoration:underline}
+
+/* ─────────── PROJECTS ─────────── */
+.projects{
+  position:relative;z-index:10;
+  margin:2rem auto 10rem;max-width:1200px;padding:0 2rem;
+}
+.projects__title{text-align:center;font-size:clamp(2rem,5vw,3rem);margin-bottom:3rem}
+.projects__grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* карточка проекта */
+.project-card{
+  position:relative;padding:1.5rem 1.75rem 3.5rem;border-radius:1.5rem;
+  backdrop-filter:blur(6px) saturate(140%);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  transition:transform .4s cubic-bezier(.25,.46,.45,1.4),box-shadow .4s;
+}
+.project-card:hover{transform:translateY(-8px) rotateX(6deg) rotateY(-3deg);box-shadow:0 18px 42px rgba(0,0,0,.35)}
+.project-card__img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:1rem;margin-bottom:1.25rem}
+.project-card__title{font-size:1.25rem;margin:.1rem 0 .5rem}
+.project-card__desc{font-size:.95rem;line-height:1.5;opacity:.85}
+.project-card__link{
+  position:absolute;left:1.75rem;bottom:1.25rem;
+  font-size:.9rem;font-weight:600;color:var(--clr-accent);
+  text-decoration:none;display:inline-flex;align-items:center;gap:.25rem;
+}
+.project-card__link::after{content:"";width:0;height:1px;background:currentColor;transition:width .4s}
+.project-card__link:hover::after{width:100%}
+
+/* ─────────── GUI поверх всех слоёв ─────────── */
+.dg.ac{z-index:100!important}
+
+/* ─────────── MOBILE STACK (опция) ─────────── */
+@media (max-width:600px){
+  .quote-container{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto 1fr;
+  }
+  .custom-quote{
+    grid-column:1;grid-row:2;
+    justify-self:start;transform:none;margin-top:.5rem;
+    font-size:clamp(24px,8vw,60px);
+  }
+  .quote{text-align:left}
+}

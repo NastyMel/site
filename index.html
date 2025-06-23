@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>[threejs] ❍ Ink Marbling Explorations with THREEJS</title>
+
+  <!-- reset + ваши стили -->
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <!-- ███ основной текст поверх «чернил» -->
+  <div class="content">
+    <div class="quote-container">
+      <div class="author">
+        Я веб-дизайнер с опытом в создании интерфейсов для банков,
+        промышленных компаний и B2B-платформ крупных производителей.  
+        Специализируюсь на UX и UI-дизайне: от исследования
+        пользовательских потребностей и сценариев до финальных макетов и поддержки дизайн-систем.
+
+        Ищу задачи, где дизайн — не просто визуальное оформление,
+        а инструмент решения реальных пользовательских и бизнес-задач.
+        Интересен продуктовый подход, командная работа и развитие в сторону стратегического UX-дизайна.
+      </div>
+      <div class="custom-quote">UX/UI designer</div>
+      <div class="quote">Анастасия<br />Мелехина</div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- ███ НОВАЯ СЕКЦИЯ PROJECTS -->
+  <section class="projects" id="projects">
+    <h2 class="projects__title">Проекты</h2>
+
+    <div class="projects__grid">
+      <!-- карточка №1 -->
+      <article class="project-card">
+        <img src="520aecc1-46af-47c5-a57e-c5474b19016b.png" alt="Ink Visualizer cover" class="project-card__img">
+        <h3 class="project-card__title">Кейс по покупке ЖД-билетов</h3>
+        <p class="project-card__desc">
+          Решение кейса по покупке ЖД билетов. Были проведены исследования и анализ продукта, создан прототип для MVP и проведено итерационное тестирование.
+        </p>
+        <a href="https://www.notion.so/14fb1329968c80ee96eee251b99ce03e?source=copy_link" class="project-card__link" target="_blank">Смотреть кейс</a>
+      </article>
+
+      <!-- карточка №2 (пример) -->
+      <article class="project-card">
+        <img src="FREE_macbook.png" alt="Dashboard UI Kit cover" class="project-card__img">
+        <h3 class="project-card__title">Дизайн новой B2B-платформы для дилеров</h3>
+        <p class="project-card__desc">
+            Создать с нуля современный и понятный веб-интерфейс для B2B-платформы
+        </p>
+        <a href="https://www.notion.so/B2B-214b1329968c80f98b6ef7e3b58e0a60?source=copy_link" class="project-card__link" target="_blank">Смотреть кейс</a>
+      </article>
+
+      <!-- добавляйте ещё <article> сколько нужно -->
+    </div>
+  </section>
+
+
+
+  <!-- подпись внизу -->
+  <div class="profile-card">
+    <img class="profile-image" src="photo_2025-06-12_04-57-02.jpg" alt="Анастасия Мелехина">
+    <div class="profile-info">
+      <p class="profile-name">Анастасия Мелехина</p>
+      <p class="profile-twitter"><a href="https://t.me/nastymel89" target="_blank">@nastymel89</a></p>
+    </div>
+  </div>
+      <!-- кастомный курсор -->
+  <div class="custom-cursor"></div>
+  <!-- three.js / fluid sim -->
+  <script type="module" src="./script.js"></script>
+
+</body>
+</html>
